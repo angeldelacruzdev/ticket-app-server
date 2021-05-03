@@ -18,6 +18,14 @@ class Sockets {
         const nuevoTickek = this.ticketList.createTicket();
         callback(nuevoTickek);
       });
+
+      //Crear el siguiente ticket solicitado.
+      socket.on("next-ticket", (data, callback) => {
+        const { agente, escritorio } = data.usuario;
+        const suTicket = this.ticketList.asignTicker(agente, escritorio);
+        callback(suTicket);
+        this.io.emit("ticket-asignado", this.ticketList.lastAsignNumber);
+      });
     });
   }
 }

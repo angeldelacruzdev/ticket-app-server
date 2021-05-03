@@ -15,7 +15,7 @@ class TicketList {
   }
 
   get lastAsignNumber() {
-    this.asignados.slice(0, 13);
+    return this.asignados.slice(0, 13);
   }
 
   createTicket() {
